@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "tardis_mod:block/tardis_void"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "tardis_mod:block/void",
+    "up": "tardis_mod:block/void",
+    "north": "tardis_mod:block/void",
+    "east": "tardis_mod:block/void",
+    "south": "tardis_mod:block/void",
+    "west": "tardis_mod:block/void",
+    "particle": "tardis_mod:block/void"
+  },
+  "render_type": "solid"
+}

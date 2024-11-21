@@ -1,0 +1,198 @@
+{
+  "mod_elements": [
+    {
+      "name": "TARDIS",
+      "type": "livingentity",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tardis",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/tardismod/client/renderer/TARDISRenderer.java",
+          "src/main/resources/assets/tardis_mod/models/item/tardis_spawn_egg.json",
+          "src/main/java/net/mcreator/tardismod/entity/TARDISEntity.java"
+        ]
+      }
+    },
+    {
+      "name": "TARDISDIM",
+      "type": "dimension",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tardisdim",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/tardis_mod/dimension_type/tardisdim.json",
+          "src/main/java/net/mcreator/tardismod/world/dimension/TARDISDIMDimension.java",
+          "src/main/resources/data/tardis_mod/dimension/tardisdim.json"
+        ]
+      }
+    },
+    {
+      "name": "TARDISRightClickedOnEntity",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tardis_right_clicked_on_entity",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/tardismod/procedures/TARDISRightClickedOnEntityProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "sourceentity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TARDISOnEntityTickUpdate",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tardis_on_entity_tick_update",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/tardismod/procedures/TARDISOnEntityTickUpdateProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TardisVoidEntityCollidesInTheBlock",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tardis_void_entity_collides_in_the_block",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/tardismod/procedures/TardisVoidEntityCollidesInTheBlockProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TardisVoid",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tardis_void",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/tardis_mod/models/block/tardis_void.json",
+          "src/main/resources/data/tardis_mod/loot_tables/blocks/tardis_void.json",
+          "src/main/resources/assets/tardis_mod/blockstates/tardis_void.json",
+          "src/main/java/net/mcreator/tardismod/block/TardisVoidBlock.java",
+          "src/main/resources/assets/tardis_mod/models/item/tardis_void.json"
+        ]
+      }
+    },
+    {
+      "name": "TARDISDIMPlayerEntersDimension",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tardisdim_player_enters_dimension",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/tardismod/procedures/TARDISDIMPlayerEntersDimensionProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    }
+  ],
+  "variable_elements": [
+    {
+      "name": "TARDIS_X",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "TARDIS_Y",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "TARDIS_Z",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "TARDISLoaded",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
+    }
+  ],
+  "sound_elements": [],
+  "tag_elements": {
+    "BLOCKS:minecraft:overworld_carver_replaceables": [
+      "~Blocks.AIR"
+    ]
+  },
+  "tab_element_order": {},
+  "language_map": {
+    "en_us": {
+      "item.tardis_mod.tardis_spawn_egg": "TARDIS Spawn Egg",
+      "entity.tardis_mod.tardis": "TARDIS",
+      "block.tardis_mod.tardis_void": "TARDIS Void"
+    }
+  },
+  "foldersRoot": {
+    "name": "~",
+    "children": []
+  },
+  "workspaceSettings": {
+    "modid": "tardis_mod",
+    "modName": "TARDIS MOD",
+    "version": "1.0.0",
+    "description": "what",
+    "author": "what",
+    "websiteURL": "what",
+    "license": "Not specified",
+    "serverSideOnly": false,
+    "requiredMods": [],
+    "dependencies": [],
+    "dependants": [],
+    "mcreatorDependencies": [],
+    "currentGenerator": "neoforge-1.20.6",
+    "credits": "what",
+    "modElementsPackage": "net.mcreator.tardismod"
+  },
+  "mcreatorVersion": 202400232117
+}
