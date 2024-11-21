@@ -1,44 +1,52 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-# This workflow will build a package using Gradle and then publish it to GitHub packages when a release is created
-# For more information see: https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#Publishing-using-gradle
+name: Publish Beta on GitHub
 
-name: Gradle Package
+on: [ pull_request, workflow_dispatch, push ]
 
-on:
-  release:
-    types: [pull]
+env:
+  JAVA_VERSION: 17
+
+permissions:
+  contents: write
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-
+    if: github.ref != 'refs/heads/release'
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up JDK 17
-      uses: actions/setup-java@v4
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-        server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
-        settings-path: ${{ github.workspace }} # location for the settings.xml file
+      - name: Check Environment Variables
+        run: env
 
-    - name: Setup Gradle
-      uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
 
-    - name: Build with Gradle
-      run: ./gradlew build
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: "temurin"
+          java-version: 17
 
-    # The USERNAME and TOKEN need to correspond to the credentials environment variables used in
-    # the publishing section of your build.gradle
-    - name: Publish to GitHub Packages
-      run: ./gradlew publish
-      env:
-        USERNAME: ${{ github.actor }}
-        TOKEN: ${{ secrets.GIT_TOKEN }}
+      - name: Make Gradle Wrapper Executable
+        if: ${{ runner.os != 'Windows' }}
+        run: chmod +x ./gradlew
+
+      - name: Build
+        run: ./gradlew clean build
+
+      - name: Publish (CurseForge/Modrinth/GitHub)
+        uses: Kir-Antipov/mc-publish@v3.3.0                                   #The specified MC-Publish GitHub Action in the version 3.2
+        with:
+          #          curseforge-id: 123456                                             #The id of your CurseForge project
+          #          curseforge-token: "${{env.CURSEFORGE_TOKEN}}"
+
+          #          modrinth-id: 1q2w3e4r                                             #The id of your modrinth project
+          #          modrinth-token: "${{env.MODRINTH_TOKEN}}"
+
+          github-token: "${{secrets.GIT_TOKEN}}"
+
+          github-generate-changelog: true
+          version-type: alpha
+
+          loaders: forge
+          java: "${{env.JAVA_VERSION}}"
